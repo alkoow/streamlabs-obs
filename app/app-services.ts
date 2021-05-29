@@ -53,6 +53,7 @@ export { ApplicationMenuService } from 'services/application-menu';
 export { MacPermissionsService } from 'services/mac-permissions';
 export { VirtualWebcamService } from 'services/virtual-webcam';
 export { MetricsService } from 'services/metrics';
+export { ColorService } from 'services/color-api/color-api'
 
 // ONLINE SERVICES
 export { UserService } from './services/user';
@@ -131,6 +132,7 @@ import { ChatService } from './services/chat';
 import { TransitionsService } from './services/transitions';
 import { MagicLinkService } from './services/magic-link';
 import { UsageStatisticsService } from './services/usage-statistics';
+import { ColorService } from 'services/color-api/color-api'
 
 export const AppServices = {
   WindowsService,
@@ -158,4 +160,5 @@ export const AppServices = {
   TransitionsService,
   MagicLinkService,
   UsageStatisticsService,
+  ColorService
 };

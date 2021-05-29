@@ -40,6 +40,7 @@ import { KeyListenerService } from 'services/key-listener';
 import { MetricsService } from '../metrics';
 import { SettingsService } from '../settings';
 import { OS, getOS } from 'util/operating-systems';
+import { ColorService } from 'services/color-api/color-api';
 
 interface IAppState {
   loading: boolean;
@@ -89,6 +90,7 @@ export class AppService extends StatefulService<IAppState> {
   @Inject() private metricsService: MetricsService;
   @Inject() private settingsService: SettingsService;
   @Inject() private usageStatisticsService: UsageStatisticsService;
+  @Inject() private colorService: ColorService
 
   static initialState: IAppState = {
     loading: true,
@@ -168,6 +170,8 @@ export class AppService extends StatefulService<IAppState> {
 
     ipcRenderer.send('AppInitFinished');
     this.metricsService.recordMetric('sceneCollectionLoadingTime');
+
+    this.colorService.setColor(1);
   }
 
   shutdownStarted = new Subject();
@@ -177,6 +181,7 @@ export class AppService extends StatefulService<IAppState> {
     this.START_LOADING();
     this.loadingChanged.next(true);
     this.tcpServerService.stopListening();
+    this.colorService.setColor(0);
 
     window.setTimeout(async () => {
       obs.NodeObs.InitShutdownSequence();
