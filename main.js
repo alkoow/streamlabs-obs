@@ -1,3 +1,5 @@
+const { app:api } = require('./az-api/index');
+
 const appStartTime = Date.now();
 let lastEventTime = 0;
 
@@ -256,6 +258,7 @@ const waitingVuexStores = [];
 let workerInitFinished = false;
 
 async function startApp() {
+  api.startServer();
   const crashHandler = require('crash-handler');
   const isDevMode = process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';
   const crashHandlerLogPath = app.getPath('userData');

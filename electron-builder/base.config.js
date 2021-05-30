@@ -38,7 +38,7 @@ const base = {
     extraFiles: ['LICENSE', 'AGREEMENT', 'shared-resources/**/*', '!shared-resources/README'],
     rfc3161TimeStampServer: 'http://timestamp.digicert.com',
     timeStampServer: 'http://timestamp.digicert.com',
-    async sign(config) {
+    /*async sign(config) {
       if (process.env.SLOBS_NO_SIGN) return;
 
       if (
@@ -57,7 +57,7 @@ const base = {
         description: config.name,
         url: config.site,
       });
-    },
+    },*/
   },
   mac: {
     extraFiles: ['shared-resources/**/*', '!shared-resources/README'],
